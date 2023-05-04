@@ -1,0 +1,22 @@
+version: '1'
+
+services:
+  mozes-php:
+    build:
+      context: .
+      dockerfile: config/Dockerfile
+    image: aronmozes97/zapocet:v1
+    expose:
+      - 9000
+    volumes:
+      - ./src:/var/www/html
+
+  kecske-web:
+    image: library/nginx:1.20.1
+    ports:
+      - "8086:80"
+    depends_on:
+      - mozes-php
+    volumes:
+      - ./src:/var/www/html
+      - ./config/default.conf:/etc/nginx/conf.d/default.conf
