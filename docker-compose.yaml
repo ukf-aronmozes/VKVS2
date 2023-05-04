@@ -11,7 +11,7 @@ services:
     volumes:
       - ./src:/var/www/html
 
-  kecske-web:
+  mozes-web:
     image: library/nginx:1.20.1
     ports:
       - "8086:80"
